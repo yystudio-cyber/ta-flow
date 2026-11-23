@@ -7,14 +7,16 @@
 ## Description（一句话简介，最多约 350 字符）
 
 ```
-本地run的招聘 TA 效率工具：JD 岗位库 + 14 维可解释匹配评分 + 浏览器 RPA + 飞书需求自动填表。单人单机、数据不出本机、不含任何业务数据，配置即用。
+在 BOSS 直聘、猎聘上自动找人的 RPA：主动搜索、翻页、读详情、逐人打分落库，驱动的就是你已登录的 Chrome。单人单机、数据不出本机、不含任何业务数据，配置即用。
 ```
 
 英文备选（如果想让国际用户也能看懂）：
 
 ```
-A local-first recruiting (TA) toolkit: JD library, explainable 14-dimension candidate scoring, browser RPA, and Feishu form autofill. Single-machine, no data leaves your disk, no business data bundled.
+A browser RPA that hunts candidates for you on BOSS Zhipin and Liepin: auto-search, paginate, read profiles, and score each one into a local talent pool — driven by your own logged-in Chrome. Local-first, nothing leaves your disk.
 ```
+
+> 重点写"RPA 找人"，而不是"AI 筛简历"——后者会让搜索到的人以为它只是个打分器。
 
 ---
 
@@ -25,20 +27,22 @@ A local-first recruiting (TA) toolkit: JD library, explainable 14-dimension cand
 ## Topics（标签，逐个添加）
 
 ```
+rpa
+browser-automation
+web-scraping
+cdp
+puppeteer
 recruiting
 talent-acquisition
+sourcing
 hr-tech
+boss-zhipin
+liepin
 electron
 vue3
 sqlite
-browser-automation
-cdp
-chrome-extension
-resume-parser
-candidate-matching
 local-first
-privacy
-chinese
+china
 ```
 
 ---
