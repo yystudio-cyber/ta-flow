@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <title>TA 匹配分助手</title>
+  <style>
+    body { font-family: -apple-system, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+           margin: 0; padding: 16px; width: 320px; font-size: 13px; color: #1f2430; }
+    h1 { font-size: 15px; margin: 0 0 12px; }
+    .row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+    .ok { background: #12a05c; } .bad { background: #d64545; } .warn { background: #e08b1e; }
+    .k { color: #6b7280; }
+    .box { background: #f5f6f8; border-radius: 8px; padding: 10px; line-height: 1.7; }
+    button { margin-top: 10px; padding: 6px 12px; border: 0; border-radius: 6px;
+             background: #1f2430; color: #fff; cursor: pointer; font-size: 12.5px; }
+    button.sec { background: #4a5568; margin-left: 6px; }
+    .note { margin-top: 12px; color: #6b7280; line-height: 1.7; font-size: 12px; }
+    #sampleStatus { margin-top: 8px; font-size: 12px; color: #4a5568; min-height: 1.2em; }
+    #sampleStatus.ok { color: #12a05c; }
+    #sampleStatus.bad { color: #d64545; }
+  </style>
+</head>
+<body>
+  <h1>TA 匹配分助手</h1>
+  <div class="row"><span id="dot" class="dot bad"></span><span id="status">检查中…</span></div>
+  <div class="box">
+    <div><span class="k">当前岗位：</span><span id="jdName">—</span></div>
+    <div><span class="k">高/低阈值：</span><span id="th">—</span></div>
+    <div><span class="k">上次同步：</span><span id="ts">—</span></div>
+  </div>
+  <button id="sync">立即同步</button>
+  <div class="note">
+    岗位来自本机 TA 平台（岗位库里激活的那个）。平台没开时会用上次缓存继续打分。<br />
+    本扩展不向 BOSS 发任何请求，只读页面已显示的内容。
+  </div>
+
+  <h1 style="margin-top:16px">适配新页面</h1>
+  <div class="note" style="margin-top:0">
+    插件只适配了「推荐牛人」页的卡片。如果你在搜索页/新页面上看不到徽章，点下面按钮
+    采一份页面结构上传到平台，方便后续适配。<br />
+    · 不采姓名/公司/学校/期望城市/薪资/技能文字，只采标签名/class/id/结构和按钮短文案（≤6字）<br />
+    · 只在你点按钮时采一次，不会常驻上传
+  </div>
+  <button id="sample" class="sec">采样当前页面结构</button>
+  <div id="sampleStatus"></div>
+  <script src="options.js"></script>
+</body>
+</html>

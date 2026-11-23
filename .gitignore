@@ -1,0 +1,110 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.env.local
+.env.*.local
+.venv/
+venv/
+
+# Build
+dist/
+# P1-16: liepin-live-run.js 的 esbuild 产物
+_rpa-harness.cjs
+dist-electron/
+release/
+# 注意：build/ 是 electron-builder 的 buildResources 目录（app.ico 等打包必需的输入），
+# 不是构建产物。原先被整体忽略 → 干净 clone 出来缺图标，打包直接失败。故不再忽略。
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ─────────────────────────────────────────────────────────────
+# 候选人数据（PII）—— 硬红线，任何情况下都不得入库
+# ─────────────────────────────────────────────────────────────
+# 这些目录装的是 RPA 跑出来的真实候选人清单（姓名/公司/履历/来源链接），
+# 属于个人信息，入库即泄露。仓库里只保留代码与脱敏样例。
+猎聘rpa/outputs_selected/
+猎聘rpa/outputs/
+猎聘rpa/cookies/
+智联rpa/**/output/
+智联rpa/**/validation/
+**/liepin_cookies*.json
+**/zhilian_cookies*.json
+**/*cookies*.json
+**/candidate*.csv
+**/*candidates_*.json
+**/review_queue.csv
+**/run_manifest.json
+**/run_state.json
+**/*候选人*.docx
+**/*候选人*.xlsx
+**/*短名单*.xlsx
+**/*搜索结果*.xlsx
+
+# Uploads / Data
+uploads/
+# 仅忽略【仓库根】下的 data/（运行期数据库目录等）；/ 前缀锚定根，不误伤 scripts/data/ 等
+# 子目录里需入库的代码资产。
+/data/
+# ── 你自己的业务数据一律不进版本库 ──
+# config/ 下除示例模板外都忽略：那里放的是你的岗位库、租户、台账路径。
+/config/*.json
+!/config/*.example.json
+# 语料目录（你自己匿名化后的简历）
+/corpus/
+# 飞书需求汇总写出的台账
+*.xlsx
+!resources/*.xlsx
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
+
+# OS
+Thumbs.db
+
+# 运行期产物：全功能行为日志（只观测不干预，按天追加）
+oplog/
+# 测试用临时目录（CI / 沙箱里把 TEMP 指到仓内时产生）
+.tmpx/
+.tmp/
+
+# 临时探针/plan/进程锁（不入库：一次性调试脚本、计划草稿、单实例锁残留）
+tmp/
+.plan.md
+.rpa-dryrun-*.lock
+# 下划线前缀的探针脚本（_probe-* / _ablate-* / _dump-* 等）是一次性取证工具，
+# 评审/分析用的正式脚本不带下划线（如 analyze-liepin-run.js）仍入库
+scripts/_*.cjs
+scripts/_*.mjs
+scripts/_*.js
+
+# Vite
+.vite/
+
+# TypeScript 增量编译缓存（构建产物，不入库）
+*.tsbuildinfo
+dist-ext/

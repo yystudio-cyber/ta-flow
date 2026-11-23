@@ -1,0 +1,23 @@
+{
+  "id": "feishu-requirement-generator",
+  "name": "飞书需求一键生成",
+  "icon": "🚀",
+  "version": "1.0.0",
+  "description": "从已有职位或手动录入字段一键填充飞书招聘新建需求表单，减少重复录入",
+  "category": "飞书招聘",
+  "matches": [
+    "*://*.feishu.cn/hire/job*",
+    "*://*.larksuite.com/hire/job*"
+  ],
+  "entry": "content.js",
+  "permissions": ["dom-read", "dom-write", "local-storage"],
+  "builtin": true,
+  "defaultConfig": {
+    "debug": false,
+    "autoFillOnNew": false
+  },
+  "configSchema": [
+    { "key": "debug", "label": "调试模式", "type": "boolean", "default": false, "description": "开启后在控制台输出详细日志" },
+    { "key": "autoFillOnNew", "label": "新建需求页自动填充", "type": "boolean", "default": false, "description": "进入新建需求页时自动从缓存的职位信息填充" }
+  ]
+}

@@ -1,0 +1,22 @@
+# 统一用 LF：这个仓库主要在 Windows 上开发，但脚本里大量 .sh / .py 必须保持 LF
+* text=auto eol=lf
+
+*.sh   text eol=lf
+*.py   text eol=lf
+*.mjs  text eol=lf
+*.js   text eol=lf
+*.cjs  text eol=lf
+*.ts   text eol=lf
+*.vue  text eol=lf
+*.json text eol=lf
+*.md   text eol=lf
+
+# 二进制
+*.png  binary
+*.jpg  binary
+*.ico  binary
+*.woff binary
+*.woff2 binary
+*.xlsx binary
+*.docx binary
+*.db   binary

@@ -1,0 +1,30 @@
+{
+  "id": "boss-match-score",
+  "name": "BOSS 直聘匹配评分助手",
+  "icon": "🎯",
+  "version": "1.1.0",
+  "description": "在 BOSS 直聘搜索页和候选人详情页实时显示匹配分（颜色徽章 + 浮动面板），关键词高亮",
+  "category": "BOSS 直聘",
+  "matches": [
+    "*://www.zhipin.com/web/geek/job*",
+    "*://www.zhipin.com/job_detail*",
+    "*://www.zhipin.com/web/geek/chat*"
+  ],
+  "entry": "content.js",
+  "permissions": ["dom-read", "dom-write"],
+  "builtin": true,
+  "defaultConfig": {
+    "showBadge": true,
+    "showDetailPanel": true,
+    "highlightKeywords": true,
+    "highThreshold": 75,
+    "lowThreshold": 60
+  },
+  "configSchema": [
+    { "key": "showBadge", "label": "显示卡片徽章", "type": "boolean", "default": true },
+    { "key": "showDetailPanel", "label": "显示详情面板", "type": "boolean", "default": true },
+    { "key": "highlightKeywords", "label": "关键词高亮", "type": "boolean", "default": true },
+    { "key": "highThreshold", "label": "高分阈值", "type": "number", "default": 75 },
+    { "key": "lowThreshold", "label": "低分阈值", "type": "number", "default": 60 }
+  ]
+}

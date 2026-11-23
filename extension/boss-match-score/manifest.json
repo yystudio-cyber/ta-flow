@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "TA 匹配分助手（BOSS 招聘端）",
+  "version": "3.0.0",
+  "description": "人工 sourcing 时在 BOSS「推荐牛人」卡片上实时显示与当前岗位的匹配分。自动识别岗位、硬门槛过滤、语义匹配、岗位不符标记。只读页面已渲染内容，不发任何平台请求。支持页面结构采样（仅用户手动触发，用于适配新页面形态）。",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsmWgLKKr6nwMUK+wFN3w+UnVD1E4g/OXlhxqt1Wg/qNmFYf9JHNtYht/xFm+qF8Ozok5lCHORl5McY21REAQYQY4aYi1sAs8SzT3kb+O8wb2wHGN5o3LrYpqgZPApAoRvDojTD/LRPlVMem7M4FQ2mLNwfq0SbJwDT/LvXaMNlQ2aieRBw6WE0FMKbpzU+ByKtQqhlUntLypFQHev/PS8K0MENpt2Ews+aFC0B4wIamHcjgI4dVPsvUOPwX8l9oZ/WgqfSu+mCzbJsaSctmMRGtEF2Mm/h2gpDv0vRwLaqPBCsZsVgwDZQNW4OB37rg06EtMoUGCUzNFGdiRPTFIjQIDAQAB",
+  "minimum_chrome_version": "102",
+  "permissions": ["storage", "alarms"],
+  "host_permissions": ["http://127.0.0.1:17385/*"],
+  "background": { "service_worker": "background.js" },
+  "options_page": "options.html",
+  "action": { "default_title": "TA 匹配分助手 v2", "default_popup": "options.html" },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.zhipin.com/web/chat*",
+        "https://www.zhipin.com/web/boss*",
+        "https://www.zhipin.com/web/frame*",
+        "https://www.zhipin.com/web/geek*"
+      ],
+      "js": ["content.bundle.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "$comment": "示例岗位库。复制本文件为自己的 config/jd-config.json 后按需要修改。数组形式（jobs）也可以直接写成单个对象。",
+  "jobs": [
+    {
+      "id": "jd_example_frontend",
+      "name": "资深前端工程师",
+      "title": "前端开发工程师",
+      "active": false,
+
+      "basic": {
+        "degree": "本科",
+        "experienceMin": 3,
+        "experienceMax": 8,
+        "city": "上海",
+        "salaryMin": 20,
+        "salaryMax": 35
+      },
+
+      "keywords": {
+        "required": ["TypeScript"],
+        "bonus": ["React", "Vue", "Node.js", "工程化", "性能优化"],
+        "negative": ["外包驻场", "培训"]
+      },
+
+      "industry": {
+        "preferred": ["互联网", "软件"],
+        "excluded": ["房地产", "金融"]
+      },
+
+      "companyTier": {
+        "preferred": ["一线大厂", "独角兽", "上市"],
+        "avoid": ["外包", "培训机构"]
+      },
+
+      "domain": {
+        "label": "B端管理后台",
+        "keywords": ["中后台", "管理系统", "表单", "权限", "低代码"],
+        "hint": "换个应用域就不算数——比如「C端电商前端」与「B端中后台」是两拨人。"
+      },
+
+      "tasks": [
+        {
+          "name": "复杂表单与数据表格开发",
+          "keywords": ["表单", "表格", "校验", "联动"],
+          "domainSensitive": true
+        },
+        {
+          "name": "前端工程化建设",
+          "keywords": ["构建", "打包", "CI", "脚手架", "规范"],
+          "domainSensitive": false
+        }
+      ],
+
+      "hardFlags": {
+        "experience": false,
+        "degree": true
+      },
+
+      "weightTemplate": "tech",
+
+      "responsibilities": [
+        "负责核心业务系统的前端架构设计与开发",
+        "推动工程化建设与性能优化"
+      ],
+
+      "jdText": "岗位职责：\n1、负责核心业务系统的前端架构设计与开发；\n2、推动工程化建设，提升交付效率。\n\n任职要求：\n1、本科及以上学历，3 年以上前端经验；\n2、精通 TypeScript 与主流前端框架；\n3、有大型项目架构经验者优先。"
+    },
+    {
+      "id": "jd_example_accounting",
+      "name": "核算会计",
+      "title": "会计",
+      "active": false,
+
+      "basic": {
+        "degree": "本科",
+        "experienceMin": 3,
+        "experienceMax": 6,
+        "city": "杭州",
+        "salaryMin": 12,
+        "salaryMax": 18
+      },
+
+      "keywords": {
+        "required": ["总账", "月结"],
+        "bonus": ["SAP", "成本核算", "税务申报", "CPA"],
+        "negative": ["代理记账"]
+      },
+
+      "industry": { "preferred": ["制造业", "科技"], "excluded": [] },
+      "companyTier": { "preferred": ["上市", "外企"], "avoid": [] },
+
+      "domain": {
+        "label": "总账与月结",
+        "keywords": ["总账", "月结", "报表", "合并", "对账"],
+        "hint": "同样做会计，「应付账款」与「总账合并」的候选人互相不通用。"
+      },
+
+      "tasks": [
+        { "name": "月度结账与报表编制", "keywords": ["月结", "报表", "对账"], "domainSensitive": true },
+        { "name": "SAP 系统操作", "keywords": ["SAP", "FI", "凭证"], "domainSensitive": false }
+      ],
+
+      "hardFlags": { "experience": false, "degree": true },
+      "weightTemplate": "functional",
+
+      "responsibilities": ["负责月度结账与财务报表编制", "参与年度审计配合"],
+      "jdText": "岗位职责：\n1、负责月度结账、报表编制与对账；\n2、参与年度审计配合。\n\n任职要求：\n1、本科及以上学历，3 年以上总账经验；\n2、熟悉 SAP 财务模块者优先。"
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+# 智联 RPA 配置
+
+login:
+  manual_login: true
+  manual_login_wait_seconds: 300
+  use_saved_cookies: true
+  login_url: "https://passport.zhaopin.com/org/login"
+  home_url: "https://rd6.zhaopin.com/"
+  cookies_file: "zhilian_cookies.json"
+
+search:
+  # 推荐 manual_page：人工在智联页面选好筛选条件，脚本只读取当前结果页，账号风险更低。
+  navigation_mode: "manual_page"   # manual_page | form_fill | direct_url
+  entry_url: "https://rd6.zhaopin.com/"
+  direct_url_template: ""
+  manual_page_wait_seconds: 300
+
+  # 搜索词要偏“岗位机制 + 业务场景”，不要一次扫太宽。
+  # ⚠️ 下面是占位示例，换成你自己岗位的词。
+  keywords:
+    - "后端开发工程师"
+    - "分布式系统 架构师"
+    - "数据平台 开发"
+    - "金融科技 技术负责人"
+  locations:
+    - "上海"
+    - "杭州"
+    - "北京"
+  # 目标公司池，留空表示不限公司
+  companies:
+    - "示例科技"
+    - "另一家示例公司"
+
+  max_pages: 2
+  max_candidates_per_run: 20
+  min_score_to_export: 15
+  min_score_to_open_detail: 35
+  strict_mode: false
+  open_detail_panel: false
+  open_profile_link: false
+  skip_seen_candidates: true
+  require_query_company_match: true
+  page_load_timeout: 12
+
+  selectors:
+    keyword_input:
+      - "input[placeholder*='关键词']"
+      - "input[placeholder*='搜索']"
+      - "input[placeholder*='候选人']"
+      - "input[type='search']"
+    location_input:
+      - "input[placeholder*='城市']"
+      - "input[placeholder*='地点']"
+      - "input[placeholder*='地区']"
+    company_input:
+      - "input[placeholder*='公司']"
+      - "input[placeholder*='企业']"
+    search_button:
+      - "button[type='submit']"
+      - "button[class*='search']"
+      - "button[class*='Search']"
+    list_card:
+      - "[data-resume-id]"
+      - "[data-candidate-id]"
+      - "[data-id]"
+      - "[class*='resumeCard']"
+      - "[class*='resume-card']"
+      - "[class*='candidateCard']"
+      - "[class*='candidate-card']"
+      - "[class*='resumeList'] [class*='item']"
+      - "[class*='candidateList'] [class*='item']"
+      - "[class*='list-item']"
+      - ".resume-card"
+      - ".candidate-card"
+    next_button:
+      - "button[aria-label*='下一']"
+      - "a[aria-label*='下一']"
+      - "button[class*='next']"
+      - "a[class*='next']"
+      - ".pagination-next"
+    candidate_link:
+      - "a[href*='resume']"
+      - "a[href*='candidate']"
+      - "a[href*='detail']"
+      - "a[target='_blank']"
+      - "a"
+    detail_panel:
+      - "[class*='resumeDetail']"
+      - "[class*='resume-detail']"
+      - "[class*='candidateDetail']"
+      - "[class*='candidate-detail']"
+      - "[class*='detailPanel']"
+      - "[class*='detail-panel']"
+      - "main"
+    name:
+      - "[class*='name']"
+      - ".name"
+      - "strong"
+      - "b"
+    title:
+      - "[class*='title']"
+      - "[class*='job']"
+      - ".title"
+    company:
+      - "[class*='company']"
+      - ".company"
+    education:
+      - "[class*='education']"
+      - "[class*='edu']"
+    experience:
+      - "[class*='experience']"
+      - "[class*='workYear']"
+      - "[class*='work-year']"
+    location:
+      - "[class*='location']"
+      - "[class*='city']"
+      - ".location"
+
+profile:
+  # 如果你有明确想找的人名，可以写在这里，姓名命中会强加分。
+  target_names: []
+  target_keywords:
+    - "后端开发"
+    - "分布式"
+    - "高并发"
+    - "出行运营"
+    - "运营负责人"
+    - "运营专家"
+    - "运营总监"
+    - "增长负责人"
+    - "城市运营"
+    - "商业化"
+  # ↓ 换成你要盯的目标公司。name 是主名，aliases 是简写 / 曾用名 / 英文名。
+  #   以下全部是占位符，不指向任何真实企业。
+  target_companies:
+    - name: "示例科技"
+      aliases: ["示例科技", "ExampleTech"]
+    - name: "示例科技B"
+      aliases: ["示例B集团"]
+    - name: "示例科技C"
+      aliases: ["示例C集团"]
+    - "示例科技D"
+    - "示例科技E"
+    - "另一家示例公司"
+  target_titles:
+    - "运营负责人"
+    - "运营总监"
+    - "城市经理"
+    - "增长负责人"
+    - "运营专家"
+    - "leader"
+    - "head"
+  seniority_keywords:
+    - "负责人"
+    - "总监"
+    - "leader"
+    - "head"
+    - "专家"
+    - "高级"
+    - "一号位"
+  preferred_education:
+    - "本科"
+    - "硕士"
+    - "博士"
+  negative_keywords:
+    - "实习"
+    - "应届"
+    - "兼职"
+    - "销售顾问"
+    - "客服"
+  score_weights:
+    target_name: 45
+    target_company: 30
+    target_title: 16
+    target_keyword: 10
+    query_keyword: 8
+    seniority: 12
+    education: 6
+    experience_8_years: 12
+    experience_5_years: 8
+    profile_link: 4
+    negative_keyword: -25
+
+# 安全节流：慢、少、人工优先。这里不做平台风控绕过，只降低误操作和高频访问。
+safety:
+  min_action_delay: 3.0
+  max_action_delay: 7.0
+  min_page_delay: 8.0
+  max_page_delay: 18.0
+  pause_after_candidates: 5
+  pause_seconds: 45
+  max_profile_opens_per_run: 8
+  stop_on_risk_checkpoint: true
+  risk_stop_words:
+    - "验证码"
+    - "安全验证"
+    - "访问频繁"
+    - "操作过快"
+    - "账号异常"
+
+output:
+  save_candidates: true
+  save_path: "./output"
+  file_format: "json"          # json | csv
+  word_report: true
+  word_report_limit: 50
+  word_filename: ""
+  state_file: "./output/run_state.json"
+  fixed_filename: ""
+  debug_path: "./output/debug"
+  dump_debug_html: true
+
+schedule:
+  enabled: false
+  time: "09:00"
+
+workflow:
+  service: "screening"
+  default_no_message: true
+  use_task_memory: true

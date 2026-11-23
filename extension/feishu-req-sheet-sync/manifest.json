@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "飞书需求 → 表格自动汇总",
+  "version": "1.0.0",
+  "description": "在 TA 日常 Chrome 里读取飞书招聘需求列表，提取新增需求，通过本地桥写入桌面 Excel。",
+  "minimum_chrome_version": "102",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtVcZ+/ljX+MsLAQGK0u61mdE+pPjKBXqO90xqaD9Cf7qGeVpCrP/m8OlF2lXT++o7xe1R4ttNF20RNYtsfSYm+P42DLvo4GXlphc2I4aCArKC6V1eOewkv5nGGygQkkY/NwKPNdKIuhJ+BIe8CSgT/3t7GIBxFIgsJkoTO6hdXFbvVl3vP0oPv1LbUcc6Az7515BbU+Rx4kNsEdleOiqBs+SE784MSDPlWtoYI3LTYffYT6gjr13Xeh7Yv+yKcO2wvgQGvtOErKiFu+pgTd2YEF4GfxxqszaAkyDuXISj+zdXMiqoa4ly/ga/ZWVhYSnqrBRLS6Hmk54uU9qnEIx4QIDAQAB",
+  "action": {
+    "default_title": "飞书需求 → 表格汇总",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.feishu.cn/hire/*",
+        "https://*.larksuite.com/hire/*"
+      ],
+      "js": ["content.bundle.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

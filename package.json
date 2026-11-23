@@ -1,0 +1,151 @@
+{
+  "name": "ta-flow",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TA Flow — 把招聘里重复的那部分压成一条流水线。单人单机的本地招聘效率工作台。",
+  "author": "yystudio-cyber",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yystudio-cyber/ta-flow.git"
+  },
+  "homepage": "https://github.com/yystudio-cyber/ta-flow#readme",
+  "keywords": [
+    "talent-acquisition",
+    "recruiting",
+    "hr-tech",
+    "resume-matching",
+    "electron",
+    "vue3",
+    "local-first",
+    "privacy-first"
+  ],
+  "main": "dist-electron/main/index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run ext:build && vue-tsc --noEmit && vite build && electron-builder",
+    "build:dir": "npm run ext:build && vite build && electron-builder --dir",
+    "build:portable": "npm run ext:build && vite build && electron-builder --win portable",
+    "preview": "vite preview",
+    "preview:web": "vite --config vite.preview.config.ts",
+    "typecheck": "vue-tsc --noEmit",
+    "postinstall": "electron-builder install-app-deps",
+    "ext:build": "node scripts/build-ext.mjs",
+    "ext:check": "node scripts/build-ext.mjs --check",
+    "ext:test": "node scripts/test-ext.mjs",
+    "ext:e2e": "node scripts/test-ext-e2e.mjs",
+    "score:check": "node scripts/score-dist-check.mjs",
+    "score:eval": "node scripts/score-eval.mjs",
+    "score:eval:lean": "node scripts/score-eval.mjs --only=lean",
+    "score:probe": "node scripts/score-probe-jd-fields.mjs",
+    "risk:test": "node scripts/risk-lab.mjs",
+    "adapter:test": "node scripts/adapter-lab.mjs",
+    "tools:test": "node scripts/tools-lab.mjs",
+    "feishu:lab": "node scripts/feishu-job-lab.mjs",
+    "feishu-ext:build": "node scripts/build-feishu-ext.mjs",
+    "feishu-ext:check": "node scripts/build-feishu-ext.mjs --check",
+    "feishu-ext:e2e": "node scripts/feishu-ext-e2e.mjs",
+    "reqsheet-ext:build": "node scripts/build-reqsheet-ext.mjs",
+    "reqsheet-ext:check": "node scripts/build-reqsheet-ext.mjs --check",
+    "reqsheet:lab": "node scripts/reqsheet-lab.mjs",
+    "contract:check": "node scripts/contract-check.mjs",
+    "jd-bridge:lab": "node scripts/jd-bridge-lab.mjs",
+    "jd-search:lab": "node scripts/jd-search-lab.mjs",
+    "score:lab": "node scripts/score-lab.mjs",
+    "semantic:check": "node scripts/semantic-lab.mjs",
+    "test": "node scripts/run-all-tests.mjs",
+    "check:bridge": "node scripts/check-bridge.mjs",
+    "check:isolation": "node scripts/check-isolation.mjs",
+    "smoke:db": "node scripts/run-electron-node.mjs scripts/smoke-db-migration.mjs",
+    "check:bundle": "node scripts/check-bundle.mjs",
+    "liepin:probe": "node scripts/run-electron-node.mjs scripts/probe-liepin.mjs",
+    "liepin:recon": "node scripts/run-electron-node.mjs scripts/recon-liepin.mjs",
+    "oplog:test": "node scripts/oplog-lab.mjs",
+    "reqsheet:e2e": "node scripts/reqsheet-e2e-real.mjs",
+    "scheduler:lab": "node scripts/scheduler-lab.mjs",
+    "score:eval:v3": "node scripts/score-eval-v3plus.mjs",
+    "score:eval:card": "node scripts/score-eval-card.mjs",
+    "seed:jds": "electron scripts/seed-jds.mjs",
+    "config:check": "node scripts/config-check.mjs"
+  },
+  "dependencies": {
+    "auto-launch": "^5.0.6",
+    "better-sqlite3": "^12.11.1",
+    "dayjs": "^1.11.11",
+    "exceljs": "^4.4.0",
+    "puppeteer-core": "npm:rebrowser-puppeteer-core@^23.10.3",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  },
+  "devDependencies": {
+    "@electron/fuses": "^2.1.3",
+    "@types/auto-launch": "^5.0.5",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^20.14.0",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "electron": "^31.1.0",
+    "electron-builder": "^24.13.3",
+    "element-plus": "^2.7.6",
+    "pinia": "^2.1.7",
+    "sass": "^1.77.6",
+    "typescript": "^5.4.5",
+    "vite": "^5.3.1",
+    "vite-plugin-electron": "^0.28.7",
+    "vite-plugin-electron-renderer": "^0.14.6",
+    "vue": "^3.4.29",
+    "vue-i18n": "^11.4.8",
+    "vue-router": "^4.4.0",
+    "vue-tsc": "^2.0.21"
+  },
+  "_buildNote": "打包配置的唯一来源就是本文件的 build 字段（electron-builder 启动日志：loaded configuration file=package.json）。此前并存的 electron-builder.yml 实测从未被加载，已删除，勿再新建。",
+  "build": {
+    "appId": "com.taflow.app",
+    "productName": "TA Flow",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "dist/**",
+      "dist-electron/**",
+      "tools/**"
+    ],
+    "asar": true,
+    "asarUnpack": [
+      "node_modules/better-sqlite3/**"
+    ],
+    "extraResources": [
+      {
+        "from": "extension",
+        "to": "extension",
+        "filter": [
+          "**/*",
+          "!**/parts/**"
+        ]
+      },
+      {
+        "from": "resources",
+        "to": "resources",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "artifactName": "${productName}-${version}-${arch}.${ext}",
+      "icon": "build/app.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "TA Flow"
+    },
+    "afterPack": "scripts/after-pack-fuses.cjs"
+  }
+}

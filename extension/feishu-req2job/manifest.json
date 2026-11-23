@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "飞书需求 → 职位 一键复制",
+  "version": "4.1.0",
+  "description": "在飞书招聘的需求详情页一键生成职位：先查审批状态（只放行「审批通过」）→ 提取需求 → 自动点开「新建职位」→ 按三步向导依次填充 → 停在提交前等你核对。不发任何平台请求，绝不自动提交。",
+  "minimum_chrome_version": "102",
+  "action": {
+    "default_title": "飞书需求 → 职位 一键复制",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.feishu.cn/hire/*",
+        "https://*.larksuite.com/hire/*"
+      ],
+      "js": ["content.bundle.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ]
+}

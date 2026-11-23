@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<style>
+  /* 点插件图标弹出的说明小窗。纯静态、无脚本（MV3 CSP 禁内联脚本，而这里也不需要任何逻辑）。
+     它存在的唯一理由：用户装完插件的第一反应就是点图标 —— 以前什么都不发生，
+     用户的结论是"插件坏了"。现在至少告诉他去哪儿用、以及更新后要刷新页面。 */
+  body { width: 300px; margin: 0; padding: 14px 16px; font: 13px/1.7 system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; color: #111827; }
+  h1 { font-size: 14px; margin: 0 0 8px; color: #4f46e5; }
+  ol { margin: 6px 0 0; padding-left: 18px; }
+  li { margin-bottom: 4px; }
+  .warn { margin-top: 10px; padding: 7px 9px; border-radius: 7px; background: #fffbeb; border: 1px solid #fde68a; color: #92400e; font-size: 12px; }
+  .muted { color: #6b7280; font-size: 12px; margin-top: 8px; }
+  b { color: #4338ca; }
+</style>
+</head>
+<body>
+  <h1>🔁 飞书需求 → 职位 一键复制</h1>
+  <div>打开<b>飞书招聘</b>的任意页面，面板会出现在<b>右下角</b>：</div>
+  <ol>
+    <li>进入一条<b>审批通过</b>的需求详情</li>
+    <li>点面板上的「<b>⚡ 一键：需求 → 新建职位</b>」</li>
+    <li>它自动填到最后一步停下 → 你核对「已粘贴」→ <b>自己点提交</b></li>
+  </ol>
+  <div class="warn">
+    ⚠ 刚安装或刚更新？<b>已经开着的飞书页面要刷新一次</b>（F5），面板才会出现。
+  </div>
+  <div class="muted">本插件不发任何网络请求、不申请任何权限、绝不替你提交。</div>
+</body>
+</html>
