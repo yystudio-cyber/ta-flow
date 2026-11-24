@@ -1,5 +1,17 @@
 # TA Flow
 
+TA Flow is a Windows desktop app for recruiters who source candidates on Chinese hiring platforms.<br>
+On **BOSS Zhipin**, it reviews profiles in the recommendation feed. On **Liepin**, it searches and opens selected profiles for a closer look.<br>
+It compares profiles against your job description and saves the results in a local SQLite database.
+
+**Try the scoring engine offline.** With Node.js installed, run `node scripts/score-lab.mjs` from a fresh clone.<br>
+No platform account or npm install is needed. The demo prints its results in Chinese.<br>
+The example below scores 76 with low confidence: the title matches, but the profile gives no work or project history.
+
+![Annotated offline demo output: 76 points, medium match, low confidence. One of two required skills matches; experience duration and project history are missing.](docs/images/offline-score-example.png)
+
+---
+
 **在 BOSS 直聘和猎聘上，自动把人找出来。**
 
 一套装在招聘同学自己电脑上的 RPA：主动搜索 + 翻页 + 读详情 + 逐个打分，
